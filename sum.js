@@ -1,25 +1,21 @@
-// Quadratic time - to check if two numbers in the array contains the sum
-// Calculating the running time of Quadratic time
+// Linear time - to check if two numbers in the array contains the sum
 function arrayContainsSum(array, sum) {
-  for (
-    let i = 0; // 1
-    i < array.length; // n + 1
-    i++ // n
-  ) {
-    const element1 = array[i]; // n
+  let i = 0;
+  let ii = array.length - 1;
 
-    for (
-      let ii = 0; // n
-      ii < array.length; //n + n^2
-      ii++ // n^2
-    ) {
-      const element2 = array[ii]; // n^2
+  while (i <= ii) {
+    const element1 = array[i];
+    const element2 = array[ii];
+    const currentSum = element1 + element2;
 
-      if (element1 + element2 === sum) {
-        // n^2
-        return true;
-      }
+    if (currentSum === sum) {
+      return true;
+    } else if (currentSum > sum) {
+      ii--;
+    } else {
+      i++;
     }
   }
-  return false; // 1
+
+  return false;
 }
